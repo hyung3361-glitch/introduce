@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>최예준 소개 페이지 목차 | Index</title>
+  <meta name="description" content="최예준의 단계별(HTML, CSS, JS) 자기소개 페이지 목차입니다.">
+
+  <!-- Pretendard 폰트 CDN -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+  <!-- Font Awesome 아이콘 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --bg-card: rgba(17, 24, 39, 0.78);
+      --bg-card-hover: rgba(31, 41, 55, 0.9);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(129, 140, 248, 0.4);
+
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+
+      --accent-primary: #6366f1;
+      --accent-secondary: #8b5cf6;
+      --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+      --accent-glow: rgba(99, 102, 241, 0.32);
+
+      --card-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.55);
+      --card-shadow-hover: 0 20px 42px -12px rgba(99, 102, 241, 0.28);
+
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+
+      --font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.88);
+      --bg-card-hover: rgba(255, 255, 255, 1);
+      --border-color: rgba(0, 0, 0, 0.08);
+      --border-highlight: rgba(99, 102, 241, 0.45);
+
+      --text-main: #0f172a;
+      --text-muted: #4b5563;
+      --text-dim: #94a3b8;
+
+      --accent-primary: #4f46e5;
+      --accent-secondary: #7c3aed;
+      --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #9333ea 50%, #db2777 100%);
+      --accent-glow: rgba(79, 70, 229, 0.2);
+
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06);
+      --card-shadow-hover: 0 20px 35px -10px rgba(99, 102, 241, 0.22);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      position: relative;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      word-break: keep-all;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* 배경 앰비언트 글로우 */
+    .bg-glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.45;
+      transition: opacity 0.5s ease;
+    }
+
+    .bg-glow-1 {
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, #6366f1 0%, transparent 70%);
+      top: -120px;
+      right: -100px;
+    }
+
+    .bg-glow-2 {
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, #ec4899 0%, transparent 70%);
+      bottom: -120px;
+      left: -150px;
+    }
+
+    .bg-glow-3 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    [data-theme="light"] .bg-glow {
+      opacity: 0.22;
+    }
+
+    /* 상단 네비게이션 */
+    .navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 68px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(11, 15, 25, 0.72);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 100;
+      transition: var(--transition);
+    }
+
+    [data-theme="light"] .navbar {
+      background: rgba(248, 250, 252, 0.78);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--accent-gradient);
+      color: #fff;
+      border-radius: var(--radius-sm);
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .logo-sub {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .theme-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .theme-btn:hover {
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+    }
+
+    /* 메인 영역 */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 56px 0 72px;
+    }
+
+    .hero-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 48px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 1; }
+    }
+
+    .hero-title {
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+
+    .gradient-text {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* 목차 카드 그리드 */
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .toc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px 26px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .toc-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      opacity: 0.85;
+      transition: var(--transition);
+    }
+
+    .toc-card.step-1::before {
+      background: linear-gradient(90deg, #38bdf8, #6366f1);
+    }
+
+    .toc-card.step-2::before {
+      background: linear-gradient(90deg, #a855f7, #ec4899);
+    }
+
+    .toc-card.step-3::before {
+      background: var(--accent-gradient);
+    }
+
+    .toc-card:hover {
+      transform: translateY(-6px);
+      background: var(--bg-card-hover);
+      border-color: var(--border-highlight);
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    .card-top {
+      margin-bottom: 28px;
+    }
+
+    .card-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .step-badge {
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      background: rgba(99, 102, 241, 0.14);
+      color: var(--accent-primary);
+    }
+
+    .step-2 .step-badge {
+      background: rgba(168, 85, 247, 0.14);
+      color: #c084fc;
+    }
+
+    [data-theme="light"] .step-2 .step-badge {
+      color: #9333ea;
+    }
+
+    .step-3 .step-badge {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(236, 72, 153, 0.2));
+      color: #f472b6;
+    }
+
+    [data-theme="light"] .step-3 .step-badge {
+      color: #db2777;
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .step-1 .card-icon {
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+    }
+
+    .step-2 .card-icon {
+      background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    }
+
+    .step-3 .card-icon {
+      background: var(--accent-gradient);
+    }
+
+    .card-file {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      font-family: 'Consolas', 'Monaco', monospace;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .card-title {
+      font-size: 1.38rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.68;
+      margin-bottom: 18px;
+    }
+
+    .feature-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+    }
+
+    [data-theme="light"] .tag {
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    /* 이동 버튼 */
+    .btn-go {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.96rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: var(--transition);
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-main);
+    }
+
+    [data-theme="light"] .btn-go {
+      background: rgba(99, 102, 241, 0.06);
+    }
+
+    .toc-card:hover .btn-go,
+    .step-3 .btn-go {
+      background: var(--accent-gradient);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 8px 22px var(--accent-glow);
+    }
+
+    .btn-go i {
+      transition: transform 0.25s ease;
+    }
+
+    .toc-card:hover .btn-go i {
+      transform: translateX(4px);
+    }
+
+    /* 푸터 */
+    .footer {
+      border-top: 1px solid var(--border-color);
+      padding: 24px 0;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.86rem;
+    }
+
+    /* 태블릿 & 모바일 반응형 */
+    @media (max-width: 900px) {
+      .toc-grid {
+        grid-template-columns: 1fr;
+        max-width: 540px;
+        margin: 0 auto;
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 36px 0 52px;
+      }
+
+      .hero-header {
+        margin-bottom: 32px;
+      }
+
+      .hero-title {
+        font-size: 1.95rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.95rem;
+      }
+
+      .toc-card {
+        padding: 24px 20px;
+        border-radius: 18px;
+      }
+
+      .card-top {
+        margin-bottom: 20px;
+      }
+
+      .card-title {
+        font-size: 1.24rem;
+      }
+
+      .btn-go {
+        padding: 14px 18px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <!-- 배경 앰비언트 글로우 -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <!-- 네비게이션 -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-badge">YJ</span>
+        <span class="logo-text">
+          최예준
+          <span class="logo-sub">Introduce Index</span>
+        </span>
+      </a>
+
+      <button id="themeToggleBtn" class="theme-btn" aria-label="테마 전환" title="다크/라이트 모드 변경">
+        <i class="fa-solid fa-sun" id="themeIcon" style="color: #f59e0b;"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- 메인 목차 영역 -->
+  <main>
+    <div class="container">
+      <div class="hero-header">
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span>단계별 웹 페이지 포트폴리오 목차</span>
+        </div>
+        <h1 class="hero-title">
+          안녕하세요, <span class="gradient-text">최예준</span>의<br />
+          자기소개 페이지 목차입니다 👋
+        </h1>
+        <p class="hero-subtitle">
+          HTML 뼈대부터 파스텔톤 CSS 디자인, 그리고 인터랙티브 JavaScript까지<br />
+          단계별로 발전하는 자기소개 페이지를 아래 버튼을 눌러 확인해 보세요.
+        </p>
+      </div>
+
+      <div class="toc-grid">
+        <!-- 1. 1-html.html -->
+        <article class="toc-card step-1">
+          <div class="card-top">
+            <div class="card-header-row">
+              <span class="step-badge">STEP 01 · HTML</span>
+              <div class="card-icon">
+                <i class="fa-brands fa-html5"></i>
+              </div>
+            </div>
+            <span class="card-file">1-html.html</span>
+            <h2 class="card-title">HTML 기본 구조 페이지</h2>
+            <p class="card-desc">
+              웹 페이지의 가장 기본이 되는 시맨틱 HTML 태그만으로 작성한 깔끔한 자기소개 문서입니다.
+            </p>
+            <div class="feature-tags">
+              <span class="tag">#시맨틱태그</span>
+              <span class="tag">#문서구조</span>
+              <span class="tag">#기본프로필</span>
+            </div>
+          </div>
+          <a href="1-html.html" class="btn-go">
+            <span>1-html.html 보러가기</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </article>
+
+        <!-- 2. 2-css.html -->
+        <article class="toc-card step-2">
+          <div class="card-top">
+            <div class="card-header-row">
+              <span class="step-badge">STEP 02 · CSS</span>
+              <div class="card-icon">
+                <i class="fa-brands fa-css3-alt"></i>
+              </div>
+            </div>
+            <span class="card-file">2-css.html</span>
+            <h2 class="card-title">CSS 스타일링 페이지</h2>
+            <p class="card-desc">
+              화사한 파스텔톤 컬러와 둥근 카드 레이아웃, 모바일 반응형 스타일을 더해 시각적으로 꾸민 페이지입니다.
+            </p>
+            <div class="feature-tags">
+              <span class="tag">#파스텔테마</span>
+              <span class="tag">#둥근카드</span>
+              <span class="tag">#모바일반응형</span>
+            </div>
+          </div>
+          <a href="2-css.html" class="btn-go">
+            <span>2-css.html 보러가기</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </article>
+
+        <!-- 3. 3-js.html -->
+        <article class="toc-card step-3">
+          <div class="card-top">
+            <div class="card-header-row">
+              <span class="step-badge">STEP 03 · JS</span>
+              <div class="card-icon">
+                <i class="fa-brands fa-js"></i>
+              </div>
+            </div>
+            <span class="card-file">3-js.html</span>
+            <h2 class="card-title">JS 인터랙티브 페이지</h2>
+            <p class="card-desc">
+              다크/라이트 테마 전환, 타이핑 효과, 탭 필터링, 실시간 방명록과 직접 수정 기능을 담은 완성형 페이지입니다.
+            </p>
+            <div class="feature-tags">
+              <span class="tag">#다크모드</span>
+              <span class="tag">#타이핑효과</span>
+              <span class="tag">#실시간방명록</span>
+            </div>
+          </div>
+          <a href="3-js.html" class="btn-go">
+            <span>3-js.html 보러가기</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="currentYear">2026</span> 최예준 (Choi Ye-jun). All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // 3-js.html과 동일한 테마 설정(yejun_theme) 연동
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const body = document.body;
+
+    function applyTheme(theme) {
+      body.setAttribute('data-theme', theme);
+      if (theme === 'dark') {
+        themeIcon.className = 'fa-solid fa-sun';
+        themeIcon.style.color = '#f59e0b';
+      } else {
+        themeIcon.className = 'fa-solid fa-moon';
+        themeIcon.style.color = '#6366f1';
+      }
+    }
+
+    const savedTheme = localStorage.getItem('yejun_theme') || 'dark';
+    applyTheme(savedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const nextTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('yejun_theme', nextTheme);
+      applyTheme(nextTheme);
+    });
+
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
