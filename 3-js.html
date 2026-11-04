@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>최예준 | Hello, I'm Ye-jun Choi</title>
+  <meta name="description" content="나를 모르는 사람들을 위한 최예준의 퍼스널 소개 사이트입니다.">
+  
+  <!-- Pretendard 폰트 CDN -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  
+  <!-- Font Awesome 아이콘 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- 스타일시트 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+  <!-- 배경 인터랙티브 그라디언트 블러 -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <!-- 네비게이션 바 -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-badge">YJ</span>
+        <span class="logo-text">최예준 <span class="logo-sub">Choi Ye-jun</span></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#about" class="nav-link"><i class="fa-regular fa-user"></i> 소개</a>
+        <a href="#traits" class="nav-link"><i class="fa-solid fa-sparkles"></i> 키워드</a>
+        <a href="#lifestyle" class="nav-link"><i class="fa-solid fa-heart"></i> 취향&라이프</a>
+        <a href="#experience" class="nav-link"><i class="fa-solid fa-compass"></i> 관심&활동</a>
+        <a href="#faq" class="nav-link"><i class="fa-regular fa-circle-question"></i> Q&A</a>
+        <a href="#guestbook" class="nav-link"><i class="fa-regular fa-comment-dots"></i> 방명록</a>
+        <a href="#contact" class="nav-link btn-contact-nav">연락하기</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- 편집 모드 토글 버튼 -->
+        <button id="editModeBtn" class="action-btn" title="화면에서 텍스트 바로 수정하기" aria-label="편집 모드">
+          <i class="fa-solid fa-pen-to-square"></i>
+          <span class="btn-text">내용 수정</span>
+        </button>
+
+        <!-- 테마 전환 버튼 (다크/라이트) -->
+        <button id="themeToggleBtn" class="action-btn theme-btn" aria-label="테마 변경">
+          <i class="fa-solid fa-sun" id="themeIcon"></i>
+        </button>
+
+        <!-- 모바일 햄버거 메뉴 -->
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="메뉴 열기">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 실시간 수정 모드 안내 배너 (기본 숨김) -->
+  <div id="editNoticeBanner" class="edit-banner hidden">
+    <div class="container edit-banner-container">
+      <div class="edit-banner-info">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span><strong>직접 수정 모드 ON:</strong> 페이지의 글자를 클릭하면 원하는 내용으로 바로 고칠 수 있어요!</span>
+      </div>
+      <div class="edit-banner-actions">
+        <button id="saveEditsBtn" class="btn-save-edit"><i class="fa-solid fa-check"></i> 저장하기</button>
+        <button id="resetEditsBtn" class="btn-reset-edit"><i class="fa-solid fa-rotate-left"></i> 초기화</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO 섹션 -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            <span class="editable" data-edit="hero-status">반갑습니다! 새로운 만남과 대화를 언제나 환영해요</span>
+          </div>
+
+          <h1 class="hero-title">
+            안녕하세요! <br />
+            <span class="gradient-text">최예준</span>입니다 👋
+          </h1>
+
+          <p class="hero-subtitle">
+            저는 <span class="typing-text" id="typingText"></span><span class="cursor">&nbsp;</span>
+          </p>
+
+          <p class="hero-desc editable" data-edit="hero-desc">
+            저를 처음 마주하신 분들을 위해 만든 작은 공간입니다.<br class="pc-only" />
+            어떤 가치관을 가지고 살아가는지, 무엇을 좋아하고 어떤 꿈을 꾸는지 편안하게 둘러보세요.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#about" class="btn-primary">
+              <span>나에 대해 알아보기</span>
+              <i class="fa-solid fa-arrow-down"></i>
+            </a>
+            <a href="#guestbook" class="btn-secondary">
+              <i class="fa-regular fa-comment-dots"></i>
+              <span>한 줄 방명록 남기기</span>
+            </a>
+          </div>
+
+          <div class="quick-stats">
+            <div class="stat-card">
+              <span class="stat-label">에너지 충전원</span>
+              <span class="stat-value editable" data-edit="stat-1">새로운 배움 & 영감</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">좌우명</span>
+              <span class="stat-value editable" data-edit="stat-2">어제보다 1% 더 나은 오늘</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">소통 스타일</span>
+              <span class="stat-value editable" data-edit="stat-3">경청과 따뜻한 공감</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="profile-card">
+            <div class="profile-avatar-wrapper">
+              <!-- 프로필 기본 일러스트/아이콘 또는 이미지 -->
+              <div class="profile-avatar-default" id="avatarPreview">
+                <i class="fa-solid fa-user-astronaut"></i>
+              </div>
+              <div class="avatar-badge" title="온라인">✨</div>
+            </div>
+
+            <div class="profile-info">
+              <h3 class="profile-name">최예준 <span class="profile-en">Choi Ye-jun</span></h3>
+              <p class="profile-role editable" data-edit="profile-role">호기심 많은 탐험가 & 크리에이터</p>
+              
+              <div class="tag-cloud">
+                <span class="tag">#긍정마인드</span>
+                <span class="tag">#끊임없는_성장</span>
+                <span class="tag">#다정함</span>
+                <span class="tag">#몰입의_즐거움</span>
+              </div>
+            </div>
+
+            <div class="profile-bottom-card">
+              <div class="mini-quote">
+                <i class="fa-solid fa-quote-left"></i>
+                <span class="editable" data-edit="profile-quote">"천천히 가더라도 끝까지 가보는 사람이고 싶습니다."</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: ABOUT (상세 소개 & 핵심 가치) -->
+    <section id="about" class="section section-about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">WHO AM I</span>
+          <h2 class="section-title">최예준이라는 사람을 소개합니다</h2>
+          <p class="section-subtitle">겉으로 보이는 모습 너머, 제 마음속에 있는 생각과 태도들을 솔직하게 담았습니다.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card story-card">
+            <div class="card-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+            <h3 class="card-title">저의 발걸음과 방향성</h3>
+            <p class="card-text editable" data-edit="about-story-1">
+              저는 낯선 호기심 앞에서 망설이기보다 먼저 한 걸음 내딛는 것을 좋아합니다. 실패를 두려워하기보다 '그 과정에서 무엇을 배웠는가'를 더 소중한 가치로 생각합니다.
+            </p>
+            <p class="card-text editable" data-edit="about-story-2">
+              혼자 앞서나가는 것보다 주변 사람들과 보폭을 맞추며 서로를 북돋아 주는 순간에 깊은 보람을 느낍니다.
+            </p>
+          </div>
+
+          <div class="about-card personality-card">
+            <div class="card-icon"><i class="fa-solid fa-seedling"></i></div>
+            <h3 class="card-title">주변에서 말하는 최예준</h3>
+            <ul class="trait-list">
+              <li>
+                <span class="bullet"><i class="fa-solid fa-check"></i></span>
+                <div>
+                  <strong class="editable" data-edit="trait-point-1">귀 기울여 들어주는 사람</strong>
+                  <p class="editable" data-edit="trait-desc-1">상대방의 이야기에 온전히 집중하고 그 사람의 입장에서 먼저 생각하려 노력합니다.</p>
+                </div>
+              </li>
+              <li>
+                <span class="bullet"><i class="fa-solid fa-check"></i></span>
+                <div>
+                  <strong class="editable" data-edit="trait-point-2">한번 시작하면 끝까지 파고드는 끈기</strong>
+                  <p class="editable" data-edit="trait-desc-2">흥미가 생기거나 맡은 역할에 대해서는 끈질기게 파고들어 완성해냅니다.</p>
+                </div>
+              </li>
+              <li>
+                <span class="bullet"><i class="fa-solid fa-check"></i></span>
+                <div>
+                  <strong class="editable" data-edit="trait-point-3">밝고 유쾌한 에너지</strong>
+                  <p class="editable" data-edit="trait-desc-3">함께 있는 사람들을 편안하고 즐겁게 만드는 부드러운 분위기를 지향합니다.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: KEYWORDS (나를 표현하는 3가지 키워드) -->
+    <section id="traits" class="section section-traits">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">CORE VALUES</span>
+          <h2 class="section-title">나를 지탱하는 3가지 키워드</h2>
+          <p class="section-subtitle">제가 세상을 바라보고 결정을 내릴 때 가장 중요하게 여기는 가치들입니다.</p>
+        </div>
+
+        <div class="keywords-grid">
+          <div class="keyword-card">
+            <div class="keyword-number">01</div>
+            <div class="keyword-icon-box color-1">
+              <i class="fa-solid fa-fire-flame-curved"></i>
+            </div>
+            <h3 class="keyword-title editable" data-edit="kw-title-1">끝없는 호기심 (Curiosity)</h3>
+            <p class="keyword-desc editable" data-edit="kw-desc-1">
+              "왜 그럴까?", "어떻게 더 재미있고 편리하게 만들 수 있을까?"라는 질문을 멈추지 않습니다. 세상의 다채로운 이야기와 기술에 언제나 열려 있습니다.
+            </p>
+          </div>
+
+          <div class="keyword-card">
+            <div class="keyword-number">02</div>
+            <div class="keyword-icon-box color-2">
+              <i class="fa-solid fa-hand-holding-heart"></i>
+            </div>
+            <h3 class="keyword-title editable" data-edit="kw-title-2">진심과 배려 (Sincerity)</h3>
+            <p class="keyword-desc editable" data-edit="kw-desc-2">
+              사람을 대할 때 계산하기보다 진심을 먼저 건넵니다. 작은 약속이라도 소중히 지키며, 함께하는 사람에게 믿음직한 러닝메이트가 되고 싶습니다.
+            </p>
+          </div>
+
+          <div class="keyword-card">
+            <div class="keyword-number">03</div>
+            <div class="keyword-icon-box color-3">
+              <i class="fa-solid fa-rocket"></i>
+            </div>
+            <h3 class="keyword-title editable" data-edit="kw-title-3">실행과 끈기 (Execution)</h3>
+            <p class="keyword-desc editable" data-edit="kw-desc-3">
+              생각에만 머무르지 않고 작게라도 직접 시도해봅니다. 과정 중 벽을 만나더라도 포기하지 않고 다른 길을 찾아내는 유연함과 끈기를 믿습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: LIFESTYLE & TMI (취향과 일상) -->
+    <section id="lifestyle" class="section section-lifestyle">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">TASTE & TMI</span>
+          <h2 class="section-title">예준의 취향 사전</h2>
+          <p class="section-subtitle">작은 취향들이 모여 저를 이룹니다. 당신과 통하는 부분이 있는지 찾아보세요!</p>
+        </div>
+
+        <div class="tmi-grid">
+          <!-- 카드 1: MBTI -->
+          <div class="tmi-card">
+            <div class="tmi-icon"><i class="fa-solid fa-fingerprint"></i></div>
+            <div class="tmi-content">
+              <span class="tmi-category">MBTI</span>
+              <h4 class="tmi-val editable" data-edit="tmi-mbti">ENFP / ENTP 성향</h4>
+              <p class="tmi-sub editable" data-edit="tmi-mbti-sub">열정과 아이디어가 넘치고, 사람들과 깊고 넓은 대화를 나누는 걸 좋아해요!</p>
+            </div>
+          </div>
+
+          <!-- 카드 2: 취미 -->
+          <div class="tmi-card">
+            <div class="tmi-icon"><i class="fa-solid fa-headphones"></i></div>
+            <div class="tmi-content">
+              <span class="tmi-category">취미 & 힐링</span>
+              <h4 class="tmi-val editable" data-edit="tmi-hobby">음악 감상, 산책 & 탐색</h4>
+              <p class="tmi-sub editable" data-edit="tmi-hobby-sub">좋은 플레이리스트를 들으며 걷거나 새로운 동네를 골목골목 구경하는 걸 즐깁니다.</p>
+            </div>
+          </div>
+
+          <!-- 카드 3: 좋아하는 음식 -->
+          <div class="tmi-card">
+            <div class="tmi-icon"><i class="fa-solid fa-utensils"></i></div>
+            <div class="tmi-content">
+              <span class="tmi-category">소울 푸드</span>
+              <h4 class="tmi-val editable" data-edit="tmi-food">맛있는 한식 & 따뜻한 국물</h4>
+              <p class="tmi-sub editable" data-edit="tmi-food-sub">좋은 사람들과 맛있는 음식을 둘러앉아 먹으며 이야기 나누는 시간이 최고의 보약입니다.</p>
+            </div>
+          </div>
+
+          <!-- 카드 4: 몰입하는 순간 -->
+          <div class="tmi-card">
+            <div class="tmi-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div class="tmi-content">
+              <span class="tmi-category">가장 몰입할 때</span>
+              <h4 class="tmi-val editable" data-edit="tmi-focus">새로운 프로젝트를 기획할 때</h4>
+              <p class="tmi-sub editable" data-edit="tmi-focus-sub">머릿속 아이디어가 실제로 구체화되고 사람들에게 닿는 모습을 상상할 때 가장 가슴이 뜁니다.</p>
+            </div>
+          </div>
+
+          <!-- 카드 5: 요즘 꽂힌 것 -->
+          <div class="tmi-card">
+            <div class="tmi-icon"><i class="fa-solid fa-fire"></i></div>
+            <div class="tmi-content">
+              <span class="tmi-category">요즘 꽂힌 것</span>
+              <h4 class="tmi-val editable" data-edit="tmi-recent">생산성 향상 & AI 도구 탐구</h4>
+              <p class="tmi-sub editable" data-edit="tmi-recent-sub">더 효율적이고 스마트하게 작업할 수 있는 기술들을 적극적으로 사용해보고 있어요.</p>
+            </div>
+          </div>
+
+          <!-- 카드 6: 휴일을 보내는 법 -->
+          <div class="tmi-card">
+            <div class="tmi-icon"><i class="fa-solid fa-couch"></i></div>
+            <div class="tmi-content">
+              <span class="tmi-category">주말 루틴</span>
+              <h4 class="tmi-val editable" data-edit="tmi-weekend">온전한 쉼과 자기충전</h4>
+              <p class="tmi-sub editable" data-edit="tmi-weekend-sub">밀린 책이나 영상을 보거나, 아무 생각 없이 푹 쉬며 다음 주를 위한 에너지를 채웁니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: INTERESTS & EXPERIENCES (관심 분야 & 활동) -->
+    <section id="experience" class="section section-experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">WHAT I CARE ABOUT</span>
+          <h2 class="section-title">관심 있는 분야 & 해온 일들</h2>
+          <p class="section-subtitle">제가 재미를 느끼고 계속해서 역량을 넓혀가고 있는 영역들입니다.</p>
+        </div>
+
+        <div class="interests-container">
+          <!-- 탭 버튼 -->
+          <div class="interest-tabs">
+            <button class="tab-btn active" data-tab="tab-all">전체보기</button>
+            <button class="tab-btn" data-tab="tab-tech">기술 & 창작</button>
+            <button class="tab-btn" data-tab="tab-collab">협업 & 소통</button>
+            <button class="tab-btn" data-tab="tab-growth">학습 & 도전</button>
+          </div>
+
+          <!-- 카드 목록 -->
+          <div class="projects-grid">
+            <div class="project-card" data-category="tech">
+              <div class="card-badge">Technology</div>
+              <h3 class="project-title editable" data-edit="proj-t-1">디지털 도구와 기술을 활용한 문제 해결</h3>
+              <p class="project-desc editable" data-edit="proj-d-1">
+                복잡하고 반복적인 문제를 기술을 통해 스마트하게 자동화하고 간소화하는 일에 매력을 느낍니다.
+              </p>
+              <div class="project-tags">
+                <span>#스마트워크</span>
+                <span>#아이디어구체화</span>
+                <span>#문제해결</span>
+              </div>
+            </div>
+
+            <div class="project-card" data-category="collab">
+              <div class="card-badge">Communication</div>
+              <h3 class="project-title editable" data-edit="proj-t-2">함께 시너지를 내는 팀 협업</h3>
+              <p class="project-desc editable" data-edit="proj-d-2">
+                다양한 배경을 가진 사람들과 생각을 조율하고 최선의 결론을 도출해내는 협업의 과정을 즐깁니다.
+              </p>
+              <div class="project-tags">
+                <span>#원활한소통</span>
+                <span>#피드백환영</span>
+                <span>#팀워크</span>
+              </div>
+            </div>
+
+            <div class="project-card" data-category="growth">
+              <div class="card-badge">Growth</div>
+              <h3 class="project-title editable" data-edit="proj-t-3">자기주도적 배움과 기록</h3>
+              <p class="project-desc editable" data-edit="proj-d-3">
+                새로운 지식을 배우면 내 것으로 체화하고, 글이나 메모로 정리하여 나누는 습관을 기르고 있습니다.
+              </p>
+              <div class="project-tags">
+                <span>#지속적성장</span>
+                <span>#기록의힘</span>
+                <span>#인사이트공유</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: FAQ (자주 묻는 질문) -->
+    <section id="faq" class="section section-faq">
+      <div class="container faq-container">
+        <div class="section-header">
+          <span class="section-tag">Q&A</span>
+          <h2 class="section-title">최예준에 대해 자주 묻는 질문</h2>
+          <p class="section-subtitle">저를 처음 만난 분들이 궁금해하실 만한 질문들을 모아봤습니다.</p>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-item active">
+            <button class="accordion-header">
+              <span class="accordion-q">Q. 어떤 사람과 대화할 때 가장 즐거운가요?</span>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-body">
+              <p class="editable" data-edit="faq-a-1">
+                자신이 좋아하는 일에 대해 눈을 반짝이며 이야기하는 사람, 그리고 솔직하고 따뜻한 태도로 서로의 생각과 경험을 나눌 수 있는 분과의 대화를 정말 좋아합니다!
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-q">Q. 스트레스를 받을 때는 어떻게 해소하나요?</span>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-body">
+              <p class="editable" data-edit="faq-a-2">
+                탁 트인 야외로 나가 음악을 들으며 30분 정도 가볍게 산책을 하거나, 따뜻한 음료를 마시며 생각을 하얀 노트에 자유롭게 적어 정리하곤 합니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-q">Q. 앞으로 꼭 이루고 싶은 목표가 있다면 무엇인가요?</span>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-body">
+              <p class="editable" data-edit="faq-a-3">
+                제 역량과 진심을 발휘해 다른 사람들의 삶에 긍정적인 변화와 작은 영감을 선물할 수 있는 의미 있는 사람이 되는 것입니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span class="accordion-q">Q. 편하게 연락해도 괜찮을까요?</span>
+              <i class="fa-solid fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-body">
+              <p class="editable" data-edit="faq-a-4">
+                네, 언제든 편하게 연락해주세요! 커피챗, 가벼운 인사, 프로젝트 제안, 또는 그냥 친해지고 싶다는 말 한마디도 모두 반갑게 맞이하겠습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: GUESTBOOK (실시간 한 줄 방명록) -->
+    <section id="guestbook" class="section section-guestbook">
+      <div class="container guestbook-container">
+        <div class="section-header">
+          <span class="section-tag">LEAVE A NOTE</span>
+          <h2 class="section-title">예준에게 한 줄 남기기</h2>
+          <p class="section-subtitle">방문해주신 흔적이나 짧은 응원, 인사를 자유롭게 남겨주세요! (브라우저에 바로 저장됩니다)</p>
+        </div>
+
+        <!-- 방명록 작성 폼 -->
+        <div class="guestbook-form-card">
+          <form id="guestbookForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="visitorName"><i class="fa-regular fa-user"></i> 닉네임 / 이름</label>
+                <input type="text" id="visitorName" placeholder="예: 반가운 친구" required maxlength="15">
+              </div>
+              <div class="form-group">
+                <label for="visitorEmoji"><i class="fa-regular fa-face-smile"></i> 기분 이모지</label>
+                <select id="visitorEmoji">
+                  <option value="👋">👋 반가워요</option>
+                  <option value="✨">✨ 응원해요</option>
+                  <option value="☕">☕ 커피 한잔</option>
+                  <option value="🔥">🔥 화이팅</option>
+                  <option value="💡">💡 영감받음</option>
+                  <option value="❤️">❤️ 좋아요</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="visitorMessage"><i class="fa-regular fa-pen-to-square"></i> 메시지</label>
+              <textarea id="visitorMessage" rows="3" placeholder="예준님, 사이트 잘 둘러보고 가요! 앞으로도 응원할게요 :)" required maxlength="150"></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit-note">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>메시지 남기기</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- 남겨진 방명록 목록 -->
+        <div class="guestbook-list-wrapper">
+          <div class="list-meta">
+            <span>남겨진 메시지 (<span id="noteCount">0</span>개)</span>
+          </div>
+          <div class="notes-grid" id="notesGrid">
+            <!-- 자바스크립트로 렌더링됨 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: CONTACT (연락처 및 소셜 링크) -->
+    <section id="contact" class="section section-contact">
+      <div class="container contact-container">
+        <div class="contact-card">
+          <div class="contact-content">
+            <span class="section-tag">GET IN TOUCH</span>
+            <h2 class="contact-title">언제든 편하게 말을 걸어주세요</h2>
+            <p class="contact-desc editable" data-edit="contact-desc">
+              좋은 기회, 커피챗, 사소한 대화 모두 언제나 환영합니다.<br />
+              아래 연락처나 소셜 채널을 통해 언제든 편하게 소통해요!
+            </p>
+
+            <div class="contact-links-list">
+              <!-- 이메일 카드 (복사 기능) -->
+              <div class="contact-item" id="copyEmailItem" title="클릭하여 이메일 주소 복사">
+                <div class="contact-item-icon">
+                  <i class="fa-regular fa-envelope"></i>
+                </div>
+                <div class="contact-item-text">
+                  <span class="label">Email</span>
+                  <strong class="value editable" data-edit="contact-email">yejun.choi.contact@gmail.com</strong>
+                </div>
+                <button class="btn-copy" aria-label="이메일 복사"><i class="fa-regular fa-copy"></i> 복사</button>
+              </div>
+
+              <!-- 소셜 링크들 -->
+              <div class="social-links-grid">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link-item">
+                  <i class="fa-brands fa-instagram"></i>
+                  <span>Instagram</span>
+                </a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link-item">
+                  <i class="fa-brands fa-github"></i>
+                  <span>GitHub</span>
+                </a>
+                <a href="https://open.kakao.com" target="_blank" rel="noopener noreferrer" class="social-link-item">
+                  <i class="fa-solid fa-comment"></i>
+                  <span>Open Kakao</span>
+                </a>
+                <a href="https://velog.io" target="_blank" rel="noopener noreferrer" class="social-link-item">
+                  <i class="fa-solid fa-blog"></i>
+                  <span>Blog</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <p class="footer-copy">© <span id="currentYear">2026</span> 최예준 (Choi Ye-jun). All rights reserved.</p>
+        <p class="footer-note">Crafted with passion to connect with wonderful people.</p>
+      </div>
+      <div class="footer-right">
+        <a href="#hero" class="btn-top" aria-label="맨 위로 가기">
+          <i class="fa-solid fa-arrow-up"></i>
+          <span>맨 위로</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 토스트 알림창 -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- 스크립트 연결 -->
+  <script src="script.js"></script>
+</body>
+</html>

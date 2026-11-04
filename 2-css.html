@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>최예준 소개 페이지</title>
+
+  <!-- 깔끔하고 예쁜 한글 폰트 (Pretendard) -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+  <!-- 밝은 파스텔톤 & 둥근 카드 & 모바일 반응형 내부 CSS -->
+  <style>
+    /* ==========================================================================
+       1. 디자인 테마 변수 (화사한 파스텔톤 & 라운드 시스템)
+       ========================================================================== */
+    :root {
+      /* 부드럽고 화사한 파스텔 배경 */
+      --bg-color: #f7f9fd;
+      --bg-gradient: linear-gradient(145deg, #fff5f5 0%, #f0f4ff 50%, #f6fcf8 100%);
+
+      /* 텍스트 색상 (선명하면서도 눈이 편안한 톤) */
+      --text-title: #1e293b;
+      --text-body: #475569;
+      --text-muted: #64748b;
+
+      /* 각 섹션별 파스텔 카드 테마 */
+      --pastel-blue-bg: #eef4ff;
+      --pastel-blue-border: #dbeafe;
+      --pastel-blue-badge: #6366f1;
+
+      --pastel-peach-bg: #fff5eb;
+      --pastel-peach-border: #fed7aa;
+      --pastel-peach-badge: #f97316;
+
+      --pastel-purple-bg: #f5f3ff;
+      --pastel-purple-border: #e9d5ff;
+      --pastel-purple-badge: #9333ea;
+
+      --pastel-mint-bg: #f0fdf9;
+      --pastel-mint-border: #ccfbf1;
+      --pastel-mint-badge: #0d9488;
+
+      --pastel-yellow-bg: #fefce8;
+      --pastel-yellow-border: #fef08a;
+      --pastel-yellow-badge: #d97706;
+
+      --pastel-pink-bg: #fff1f2;
+      --pastel-pink-border: #fecdd3;
+      --pastel-pink-badge: #e11d48;
+
+      /* 둥근 카드 및 그림자 */
+      --card-radius: 26px;
+      --item-radius: 16px;
+      --pill-radius: 9999px;
+      --card-shadow: 0 10px 25px -5px rgba(100, 116, 139, 0.08), 0 8px 10px -6px rgba(100, 116, 139, 0.04);
+      --card-shadow-hover: 0 20px 30px -8px rgba(99, 102, 241, 0.15);
+      
+      --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* 기본 리셋 */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      color: var(--text-body);
+      line-height: 1.75;
+      word-break: keep-all;
+      padding: 48px 16px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ==========================================================================
+       2. 헤더 (헤더 카드: 산뜻한 파스텔 그라디언트)
+       ========================================================================== */
+    header {
+      width: 100%;
+      max-width: 660px;
+      background: #ffffff;
+      border: 2px solid #e0e7ff;
+      border-radius: var(--card-radius);
+      padding: 38px 28px;
+      text-align: center;
+      margin-bottom: 24px;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #818cf8, #f472b6, #fbbf24, #34d399);
+    }
+
+    header:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    header h1 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--text-title);
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      font-size: 1.02rem;
+      color: #6366f1;
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       3. 메인 컨테이너 및 둥근 카드 레이아웃
+       ========================================================================== */
+    main {
+      width: 100%;
+      max-width: 660px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    /* 둥근 카드 기본 스타일 */
+    .card {
+      background: #ffffff;
+      border-radius: var(--card-radius);
+      padding: 30px 26px;
+      box-shadow: var(--card-shadow);
+      border: 1.5px solid transparent;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    /* 카드 제목: 둥근 알약형 파스텔 뱃지 */
+    .card h2 {
+      font-size: 1.22rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 16px;
+      border-radius: var(--pill-radius);
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    /* ==========================================================================
+       4. 각 카드별 밝은 파스텔톤 컬러 지정
+       ========================================================================== */
+
+    /* [1] 프로필 카드 - 파스텔 블루 */
+    .profile-card {
+      background: var(--pastel-blue-bg);
+      border-color: var(--pastel-blue-border);
+    }
+    .profile-card h2 {
+      background: #ffffff;
+      color: var(--pastel-blue-badge);
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.12);
+    }
+
+    /* [2] 자기소개 카드 - 파스텔 피치 */
+    .about-card {
+      background: var(--pastel-peach-bg);
+      border-color: var(--pastel-peach-border);
+    }
+    .about-card h2 {
+      background: #ffffff;
+      color: var(--pastel-peach-badge);
+      box-shadow: 0 2px 8px rgba(249, 115, 22, 0.12);
+    }
+    .about-card p {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 16px 20px;
+      border-radius: var(--item-radius);
+      margin-bottom: 12px;
+      line-height: 1.8;
+      color: #334155;
+    }
+    .about-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* [3] 키워드 카드 - 파스텔 퍼플 */
+    .keywords-card {
+      background: var(--pastel-purple-bg);
+      border-color: var(--pastel-purple-border);
+    }
+    .keywords-card h2 {
+      background: #ffffff;
+      color: var(--pastel-purple-badge);
+      box-shadow: 0 2px 8px rgba(147, 51, 234, 0.12);
+    }
+    .keyword-item {
+      background: #ffffff;
+      border: 1px solid #e9d5ff;
+      border-radius: var(--item-radius);
+      padding: 18px 20px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(147, 51, 234, 0.04);
+      transition: var(--transition);
+    }
+    .keyword-item:last-child {
+      margin-bottom: 0;
+    }
+    .keyword-item:hover {
+      border-color: #c084fc;
+      transform: translateX(3px);
+    }
+    .keyword-item h3 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #7e22ce;
+      margin-bottom: 6px;
+    }
+    .keyword-item p {
+      font-size: 0.94rem;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    /* [4] 취미 & 취향 카드 - 파스텔 민트 */
+    .hobby-card {
+      background: var(--pastel-mint-bg);
+      border-color: var(--pastel-mint-border);
+    }
+    .hobby-card h2 {
+      background: #ffffff;
+      color: var(--pastel-mint-badge);
+      box-shadow: 0 2px 8px rgba(13, 148, 136, 0.12);
+    }
+
+    /* [5] 목표 카드 - 파스텔 옐로우 */
+    .goals-card {
+      background: var(--pastel-yellow-bg);
+      border-color: var(--pastel-yellow-border);
+    }
+    .goals-card h2 {
+      background: #ffffff;
+      color: var(--pastel-yellow-badge);
+      box-shadow: 0 2px 8px rgba(217, 119, 6, 0.12);
+    }
+    .goals-card p {
+      background: #ffffff;
+      padding: 20px 22px;
+      border-radius: var(--item-radius);
+      border-left: 5px solid #f59e0b;
+      line-height: 1.85;
+      color: #334155;
+      box-shadow: 0 2px 6px rgba(217, 119, 6, 0.05);
+    }
+
+    /* [6] 연락처 카드 - 파스텔 핑크 */
+    .contact-card {
+      background: var(--pastel-pink-bg);
+      border-color: var(--pastel-pink-border);
+    }
+    .contact-card h2 {
+      background: #ffffff;
+      color: var(--pastel-pink-badge);
+      box-shadow: 0 2px 8px rgba(225, 29, 72, 0.12);
+    }
+    .contact-card > p {
+      color: #475569;
+      font-weight: 500;
+      margin-bottom: 16px;
+      font-size: 0.98rem;
+    }
+
+    /* ==========================================================================
+       5. 리스트(ul, li) 스타일링 (둥근 화이트 알약/아이템 형태)
+       ========================================================================== */
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    li {
+      background: #ffffff;
+      padding: 14px 18px;
+      border-radius: var(--item-radius);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      font-size: 0.96rem;
+      color: var(--text-title);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    li:hover {
+      transform: translateX(3px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    li strong {
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       6. 푸터
+       ========================================================================== */
+    footer {
+      width: 100%;
+      max-width: 660px;
+      text-align: center;
+      padding: 34px 16px 16px;
+      color: #94a3b8;
+      font-size: 0.88rem;
+    }
+
+    /* ==========================================================================
+       7. 모바일 반응형 미디어 쿼리 (스마트폰 최적화)
+       ========================================================================== */
+    @media (max-width: 600px) {
+      body {
+        padding: 24px 12px;
+      }
+
+      header {
+        padding: 28px 20px;
+        border-radius: 20px;
+        margin-bottom: 18px;
+      }
+
+      header h1 {
+        font-size: 1.55rem;
+      }
+
+      header p {
+        font-size: 0.92rem;
+      }
+
+      .card {
+        padding: 22px 18px;
+        border-radius: 20px;
+      }
+
+      .card h2 {
+        font-size: 1.12rem;
+        padding: 5px 14px;
+        margin-bottom: 16px;
+      }
+
+      .about-card p {
+        padding: 14px 16px;
+        font-size: 0.94rem;
+      }
+
+      .keyword-item {
+        padding: 14px 16px;
+      }
+
+      .keyword-item h3 {
+        font-size: 1rem;
+      }
+
+      .keyword-item p {
+        font-size: 0.9rem;
+      }
+
+      .goals-card p {
+        padding: 16px 18px;
+        font-size: 0.93rem;
+      }
+
+      li {
+        padding: 12px 14px;
+        font-size: 0.91rem;
+        border-radius: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 헤더 영역 -->
+  <header>
+    <h1>안녕하세요, 최예준입니다 👋</h1>
+    <p>저를 아직 잘 모르는 분들을 위해 만든 소소한 자기소개 페이지입니다.</p>
+  </header>
+
+  <!-- 본문 영역 -->
+  <main>
+    <!-- 프로필 요약 카드 -->
+    <section class="card profile-card">
+      <h2>기본 프로필</h2>
+      <ul>
+        <li><strong>이름:</strong> 최예준 (Choi Ye-jun)</li>
+        <li><strong>MBTI:</strong> ENFP / ENTP (호기심 많은 열정가)</li>
+        <li><strong>좌우명:</strong> 어제보다 1% 더 성장하는 오늘을 살자</li>
+        <li><strong>관심사:</strong> 새로운 기술, 창작, 사람들과의 따뜻한 소통</li>
+      </ul>
+    </section>
+
+    <!-- 자기소개 카드 -->
+    <section class="card about-card">
+      <h2>저를 소개합니다</h2>
+      <p>
+        저는 낯선 호기심 앞에서 망설이기보다 먼저 한 걸음 내딛는 것을 좋아합니다.
+        새로운 것을 배우고 탐구하는 과정에서 가장 큰 즐거움을 느끼며,
+        실패를 두려워하기보다는 배움의 기회로 삼으려 노력합니다.
+      </p>
+      <p>
+        혼자 앞서나가는 것보다 주변 사람들과 보폭을 맞추며 서로를 북돋아 주고,
+        긍정적인 에너지를 함께 나눌 수 있는 든든한 동료이자 친구가 되고 싶습니다.
+      </p>
+    </section>
+
+    <!-- 핵심 키워드 카드 -->
+    <section class="card keywords-card">
+      <h2>나를 표현하는 3가지 키워드</h2>
+      <div class="keyword-item">
+        <h3>1. 호기심 (Curiosity)</h3>
+        <p>"왜 그럴까?", "어떻게 더 좋게 만들 수 있을까?" 끊임없이 묻고 탐구합니다.</p>
+      </div>
+      <div class="keyword-item">
+        <h3>2. 진심과 배려 (Sincerity)</h3>
+        <p>사람을 대할 때 무엇보다 진심을 건네며, 경청과 공감을 최우선으로 생각합니다.</p>
+      </div>
+      <div class="keyword-item">
+        <h3>3. 끈기와 실행 (Execution)</h3>
+        <p>생각에만 머물지 않고 작게라도 시도하며, 끝까지 책임감 있게 파고듭니다.</p>
+      </div>
+    </section>
+
+    <!-- 취향과 일상 카드 -->
+    <section class="card hobby-card">
+      <h2>좋아하는 것들 (취향 & 취미)</h2>
+      <ul>
+        <li>🎧 <strong>음악 감상:</strong> 기분에 따라 다양한 플레이리스트를 들으며 힐링하기</li>
+        <li>🚶 <strong>산책과 탐색:</strong> 맑은 공기를 마시며 새로운 동네 골목 걷기</li>
+        <li>🍲 <strong>맛있는 음식:</strong> 좋은 사람들과 둘러앉아 따뜻한 한 끼 함께하기</li>
+        <li>💡 <strong>아이디어 스케치:</strong> 일상 속 떠오르는 재미난 상상을 메모하고 구체화하기</li>
+      </ul>
+    </section>
+
+    <!-- 목표와 다짐 카드 -->
+    <section class="card goals-card">
+      <h2>앞으로의 목표와 꿈</h2>
+      <p>
+        제가 가진 역량과 따뜻한 진심을 바탕으로,
+        누군가의 일상에 기분 좋은 영감과 긍정적인 가치를 선물할 수 있는 사람으로 꾸준히 성장하고 싶습니다.
+      </p>
+    </section>
+
+    <!-- 연락처 카드 -->
+    <section class="card contact-card">
+      <h2>언제든 편하게 연락해주세요</h2>
+      <p>가벼운 인사, 커피챗, 새로운 기회 등 모든 대화를 환영합니다!</p>
+      <ul>
+        <li><strong>이메일:</strong> yejun.choi@example.com</li>
+        <li><strong>인스타그램:</strong> @yejun_choi</li>
+        <li><strong>깃허브:</strong> github.com/yejun-choi</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- 푸터 영역 -->
+  <footer>
+    <p>&copy; 2026 최예준 (Choi Ye-jun). All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
